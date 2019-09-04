@@ -1,0 +1,268 @@
+
+\documentclass[12pt,a4paper,oneside]{book}
+
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{longtable}
+\usepackage[refpages]{gloss}
+\usepackage{float}
+\usepackage{anysize}
+\usepackage{appendix}
+\usepackage{lscape} 
+\usepackage{pdflscape}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{enumerate} 
+
+\graphicspath{{./images/}}
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	CONFIGURACION
+%----------------------------------------------------------------------------------------
+
+\marginsize{3.0cm}{3.0cm}{2.0cm}{3.0cm}
+\renewcommand*{\contentsname}{ÍNDICE}
+\renewcommand*{\listtablename}{Índice de tablas}
+\renewcommand*{\listfigurename}{Índice de figuras}
+\renewcommand{\baselinestretch}{1.0}
+\renewcommand{\appendixname}{Anexos}
+\renewcommand{\appendixtocname}{Anexos}
+\renewcommand{\appendixpagename}{Anexos}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+\renewcommand*{\tablename}{Tabla}
+\renewcommand*{\chaptername}{Capítulo}
+\renewcommand*{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+
+%----------------------------------------------------------------------------------------
+%	PORTADA
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+ 
+\begin{center}
+ 
+{\LARGE \bf UNIVERSIDAD NACIONAL DE SAN AGUSTÍN}\\
+\vspace{0.5cm}
+{\Large FACULTAD DE INGENIERÍA DE PRODUCCIÓN Y SERVICIOS}\\
+{\normalsize ESCUELA PROFESIONAL DE INGENIERÍA DE SISTEMAS}\\
+[1.0cm]
+
+\begin{center}
+\includegraphics[width=5cm]{logounsa}
+\end{center}
+
+\vspace{1cm}
+{\bf \large TÍTULO: }\\
+\title{Estimación automática de diámetros en granos de café} % titulo de tu tesis para latex
+{\bf \large Sistema computacional para la medición absoluta de diámetros de granos de café verde}\\
+[0.5cm] % titulo de tu tesis
+\vspace{1cm}
+\begin{center}
+Presentado por el bachiller:\\~\\
+\textbf{\large{Renzo Andre Condo Miranda}}\\~\\
+Para optar el título profesional de:\\
+\textbf{\large{Ingeniero de Sistemas}}\\
+\end{center}
+ 
+ \vspace{1cm}
+ 
+ \hspace{12cm}{\bf ASESOR:}
+\begin{flushright}
+{Christian E. Portugal-Zambrano}\\
+\end{flushright}
+\vspace{2cm}
+{\large Arequipa - Perú}\\[0.2cm] % fecha de sustentación
+\end{center}
+
+\end{titlepage}
+
+\newpage
+\newpage
+
+
+%----------------------------------------------------------------------------------------
+%	TABLA DE CONTENIDOS
+%---------------------------------------------------------------------------------------
+
+\tableofcontents
+\cleardoublepage
+\makegloss
+\newpage
+
+
+
+%----------------------------------------------------------------------------------------
+%	PLANTEAMIENTO DEL PROBLEMA
+%----------------------------------------------------------------------------------------
+
+%\chapter{PLANTEAMIENTO DEL PROBLEMA}
+\chapter{Planteamiento del problema}
+\section{Descripción de la realidad de la problemática}
+El café es una de las bebidas más consumida por las personas alrededor del mundo. Su sabor, acidez, aroma, cuerpo y consistencia son una mezcla que gusta a muchísimos. En Perú es uno de los principales productos agrícolas de exportación; sin embargo, en comparación con otros países productores, el rendimiento de producción es relativamente bajo~\cite{Diaz2017}.
+
+Para llegar a obtener granos de calidad se debe tener en cuenta diferentes factores como: temperatura, altura, vientos, lluvias, humedad~\cite{Figueroa2015}, etc, algunos no serán considerados en este trabajo, aquí nos enfocamos en la calidad post-cosecha, donde la calidad de los granos de café está determinada por sus características físicas y organolépticas. Para preservar la calidad se debe llevar un control antes de la cosecha, durante la cosecha y después de la cosecha de los granos. En la fase de post-cosecha se da el beneficio húmedo, este proceso comprende varios pasos para conservar la calidad del producto como: recepción y pesado del cerezo, clasificación del cerezo, despulpado, fermentación, lavado, secado, almacenamiento del café y manejo de residuos del beneficio del café. Posterior al beneficio húmedo se da el beneficio seco, el cual ocurre antes de la exportación, está conformado por los pasos de: trillado, pulido y selección final, en esta selección final se hará la clasificación por tamaño, forma, densidad y color de los granos de café verde~\cite{Marin2013}.
+
+En el proceso de selección de granos de café son considerados diferentes características o cualidades, entre ellos tenemos: el tamaño, aspecto del café, color, abertura de la hendidura, aroma, cuerpo, acidez, amargo y sabor~\cite{Lara2005}, para el proceso de control de calidad físico se utiliza una muestra de 350 gramos por lote. En este trabajo nos enfocaremos en la clasificación por tamaño de granos de café, para lo cual se usa actualmente tamices de entre 13 y 20 milímetros~\cite{Marin2013}. 
+
+La clasificación por tamaños de los granos de café verde, es un parámetro de calidad, entonces aparece el término granulometría, el cual tiene como objetivo establecer una metodología de rutina para realizar el análisis del tamaño de grano entero del café verde mediante el tamizado mecánico, utilizando zarandas~\cite{Funez2010}. Para realizar esta tarea, se debe seleccionar tamices de acuerdo al tipo de clasificación que se desea obtener, los tamices deben estar ordenados de forma ascendente de acuerdo al número que poseen y ser colocados en un agitador, este zarandeo se debe hacer por lo menos dos veces sobre una muestra de 100 gramos, pero antes se debe separar materia extraña y granos partidos. Por cada zarandeada se debe obtener los resultados en términos de porcentaje de masa, en este sentido, la suma de cada uno de los tamices, más los objetos extraños y los granos en el fondo, debe ser igual a los 100 gramos iniciales, de lo contrario, se debe hacer nuevamente todo el proceso. Como resultado final se promedia las masas obtenidas por zaranda realizada para obtener los porcentajes por tamaños de los granos.
+
+La homogeneidad que puede existir en el tamaño de los granos de café, es también un índice de calidad en los granos, esto nos lleva a enfocarnos en las características físicas de los granos de café verde, más precisamente en el tamaño de estos, para el proceso de selección de granos de calidad. Actualmente se utilizan tamices con diferentes diámetros y se hace una clasificación por porcentaje de granos de café, según los tamices.
+
+El proceso manual realizado para este proceso es tedioso y trabajoso, dado que la persona debe estar moviendo los tamices, contabilizando y anotando los resultados, esto puede hacer que la persona a cargo de este proceso se canse rápidamente y en consecuencia realizar este paso de forma errónea, lo que podría provocar una deficiencia en todo el proceso de control de calidad de los granos de café verde.
+
+\section{Delimitaciones y definición del problema}
+
+\subsection{Delimitaciones}
+Se usará técnicas de procesamiento de imágenes digitales para realizar una clasificación de una muestra de granos de café verde en un ambiente controlado. Esta clasificación se hará en base a las medidas entre 13 y 20 milímetros, según el manual técnico de control de calidad del café. Se usará una cámara digital como dispositivo de adquisición. La imagen contará con una referencia en la escena la cual tendrá una medida establecida, esta se utilizará para obtener una relación cuantificable entre milímetros y píxeles. En este trabajo no consideramos escenas en movimiento ni factores externos al proceso de control de calidad de granos de café.
+
+\subsection{Definición del problema}
+El proceso manual para la clasificación por tamaño de granos de café verde es largo y tedioso para las personas a cargo de este proceso, el tamizado se debe hacer varias veces para obtener datos más precisos mediante el ponderado de los datos y si se hace mal, se debe volver hacer nuevamente todo el proceso, esto puede generar una deficiencia en el control de calidad. Es necesario automatizar este proceso de clasificación por tamaño de granos de café verde en laboratorios de control de calidad.
+
+\section{Formulación del problema}
+La clasificación por tamaños de granos de café, se hace de forma manual en la actualidad, pero por ser un proceso largo y que necesita una buena precisión, se hará uso de técnicas de procesamiento de imágenes digitales para automatizar este proceso, de esta forma tener resultados más precisos de la clasificación por tamaños. Se considera la utilización de imágenes digitales de granos de café obtenida bajo condiciones de iluminación controlada, también se utilizará un objeto de referencia con medidas establecidas, el cual servirá para el cálculo de la relación pixel-milímetros, a las escenas digitales se les aplicará operadores morfológicos y de segmentación para hallar medidas estadísticas relevantes al proceso de tamizado. Finalmente, los resultados del diámetro promedio por grano serán evaluados y reportados.
+
+\section{Objetivos}
+
+\subsection{Objetivo principal}
+Desarrollar un sistema computacional para la medición absoluta de diámetros de granos de café verde.
+
+\subsection{Objetivos específicos}
+\begin{itemize}
+	\item Generar un conjunto de imágenes de granos de café verde clasificado por medidas.
+	\item Elaborar un modelo de segmentación de granos de café en una imagen digital.
+	\item Elaborar un modelo de análisis morfológico para la estimación de medidas.
+	\item Analizar y validar el modelo computacional propuesto.
+\end{itemize}
+
+\section{Hipótesis}
+Es probable desarrollar un sistema que pueda clasificar roubstamente una muestra de granos de café verde por diámetros mediante el uso de técnicas de procesamiento de imágenes digitales.
+
+\section{Variables e indicadores}
+
+\subsection{Variable independiente}
+En este trabajo se considera a la medida real de cada muestra como una variable independiente, luego se considera una variable que realiza la conversión de píxeles a milímetros, esta medida origina cambios en la medida obtenida y es controlada mediante un proceso de calibración manual, entonces es considera una variable independiente.
+
+\subsubsection{Indicadores}
+La medida real de cada muestra y nuestra variable de conversión se indican en milímetros.
+
+\subsubsection{Índices}
+La medida de cada muestra (MR) s	e indica en un rango de $[0,20]$ y $\text{MR} \in Z$, nuestra variable de conversión (C) se indica en un rango de $[0, \infty \rangle$ donde $C \in R$
+
+\subsection{Variable dependiente}
+Para este trabajo la medida obtenida de diámetro para cada muestra de café será nuestra variable dependiente.
+
+\subsubsection{Indicadores}
+Se considera un buen resultado cuando nuestra medida obtenida de diámetro es igual que la medida real, entonces un indicador es el error que existe entre ambas medidas, entre los posibles indicadores proponemos el uso del Error Mínimo Cuadrático o MSE.
+
+\subsubsection{Índices}
+El error (E) varía en un rango de $[0,+\infty\rangle$ considerando valores próximos a cero como resultados deseados y $E \in R$.
+
+\section{Viabilidad de la investigación}
+
+\subsection{Viabilidad técnica}
+El presente proyecto es viable técnicamente dado que existen técnicas de procesamiento de imágenes digitales para el análisis de los granos de café, se han investigado diversas técnicas para que se pueda identificar a cada uno de los granos y clasificarlos de acuerdo a las medidas de los diámetros que posee cada uno.
+
+También se cuenta con una cámara para la adquisición de imágenes y un conjunto de muestras evaluadas de granos de café de diferentes tamaños para poder realizar pruebas y evaluaciones del modelo a desarrollarse.
+
+\subsection{Viabilidad operativa}
+Para el desarrollo de este proyecto, el autor tiene los conocimientos básicos de las diferentes técnicas que se utilizarán durante todo el desarrollo del proyecto y cuenta con la guía de un experimentado asesor especializado en el análisis de imágenes por visión computacional, quién a su vez ha hecho trabajos relacionados a la calidad de los granos de café.
+
+\subsection{Viabilidad económica}
+Este proyecto es viable económicamente porque se tiene los recursos necesarios como una cámara fotográfica, una computadora para procesamiento y muestras de granos de café.  Se dispone de las licencias de software necesarias para la integración del modelo computacional y la cámara de adquisición. 
+
+\section{Justificación e importancia de la investigación}
+
+\subsection{Justificación}
+En el proceso de control de calidad de granos de café verde, está incluido la clasificación por tamaños en una muestra, este proceso puede llegar a ser muy trabajoso y pesado para las personas dado que deben: primero pesar 100 gramos con una aproximación de 0.1 gramos de error de la muestra, registrar la presencia de materia extraña y granos partidos, seleccionar lo tamices a utilizar de acuerdo al tipo de clasificación que se desea, colocando las mallas de menos diámetro en la parte inferior y luego colocar los 100 gramos de la prueba en la parte superior, agitar o programar a la máquina para que agite por el lapso de dos minutos, pesar los granos retenidos en cada malla y repetir todo el proceso por lo menos una vez más. Luego se debe contabilizar y registrar los resultados, la sumatoria de los granos en cada malla más los defectuosos debe ser igual a los 100 gramos iniciales con aproximación a 0.5 gramos, caso contrario, la prueba no será válida y se deberá repetir el proceso con una nueva muestra~\cite{Funez2010}. Esta etapa del proceso es muy importante, porque una gran cantidad de granos pequeños perjudicarían posteriormente el tueste de los granos grandes y viceversa, provocando que los granos pequeños se tuesten demasiado en el tiempo que requieren tostarse los granos grandes o que los granos grandes no alcanzarán el tueste necesario en el tiempo que requieren los granos pequeños~\cite{Hilten2011}. Es necesario automatizar este proceso buscando disminuir el tiempo requerido para esta tarea, también disminuir la carga de trabajo realizada por el personal permitiéndole enfocarse en tareas de control de calidad más importantes como la catación de café.
+
+\subsection{Importancia}
+Como se ha expuesto, todo el proceso de selección de granos de café de calidad está conformado por distintos pasos, de los cuales, el presente trabajo se centra en la clasificación de una muestra de granos de café verde, de acuerdo al tamaño de su diámetro. Para realizar dicha tarea se propone un modelo computacional que se encargará de realizar este paso de forma automática mediante la adquisición y procesado de imágenes fotográficas digitales de la muestra de granos de café.
+
+De esta forma se busca tener una mejor precisión en la clasificación de los granos de café en una muestra, por lo que el catador se centrará en el análisis de los datos obtenidos y no en realizar todo el proceso adecuadamente, como se expuso anteriormente, elevando así la precisión de medición de la muestra, por lo que la probabilidad de un tostado uniforme de todos los granos, en los siguientes pasos de todo el proceso, sea más elevada.
+
+\section{Alcance}
+Se pretende automatizar la clasificación por diámetro de granos de café verde en una muestra, por medio del desarrollo de un modelo computacional que sea capaz de analizar imágenes digitales  de granos de café para según los tamaños clasificarlos.
+
+\section{Tipo y nivel de la investigación}
+
+\subsection{Tipo de la investigación}
+Este proyecto pertenece a una investigación de tipo aplicada, ya que se quiere resolver un problema de la vida real mediante el procesamiento de imágenes digitales ya desarrolladas para la resolución de nuestro problema.
+
+\subsection{Nivel de la investigación}
+El nivel de la investigación de este proyecto es aplicativo, porque se usarán métodos y técnicas de procesamiento de imágenes para la extracción de medidas de los granos de café verde.
+
+\section{Método y diseño de la investigación}
+
+\subsection{Método de la investigación}
+El método de investigación de este proyecto de inductivo, debido a que se hará un análisis de los resultados obtenidos a partir de los experimentos de medición que se harán con el sistema propuesto.
+
+\subsection{Diseño de la investigación}
+El diseño de la presente investigación es de nivel exploratoria, ya que a partir del problema planteado, y siguiendo un conjunto de etapas, se usarán algunas técnicas de procesamiento de imágenes digitales para poder alcanzar el objetivo planteado disminuyendo así la carga de trabajo de los catadores.
+
+\section{Cobertura de estudio}
+
+\subsection{Universo}
+En el proceso de control de calidad el proceso de tamizado se aplica a todos los tipos de granos de café reconocidos por el estándar mundial de control de calidad de granos de café,  existen dos especies: arábiga y robusta, se plantea trabajar un modelo de clasificación de granos de café por diámetro aplicable a todas las variedades de granos.
+
+\subsection{Muestra}
+Para este trabajo se considera el uso de muestras físicamente evaluadas por catadores especializados equivalente a 1 kg, estas muestras fueron clasificadas utilizando zarandas de 13 a 20mm.
+
+\section{Estructura tentativa}
+\begin{center}
+\begin{verbatim}
+      Capítulo 1.- Introducción
+         1.1.- Idea central
+         1.2.- Objetivos
+         1.3.- Contribuciones
+         1.4.- Organización del trabajo
+      Capítulo 2.- Marco teórico
+         2.1.- Control de calidad de café verde
+         2.2.- Procesamiento de Imágenes
+         2.3.- Segmentación de imágenes
+         2.4.- Análisis morfológico de imágenes
+      Capítulo 4.- Estado del arte
+      Capítulo 5.- Segmentación y detección de bordes de granos
+      de café
+      Capítulo 6.- Estimación de diámetros en granos de café
+      Capítulo 7.- Pruebas y resultados
+      Capítulo 8.- Conclusiones y trabajos futuros
+      Apéndice A .- Conjunto de imágenes 
+      Bibliografía
+\end{verbatim}
+\end{center}
+
+\section{Estado del arte}
+Lograr un café de calidad, requiere todo un meticuloso proceso con especial atención en todos los detalles del grano de café, desde la siembra hasta el tostado y molido de este. Por tal motivo ha sido tema de estudio por diferentes especialistas con el fin obtener procesos de calidad de los granos de café enfocándose en sus características físicas y organolépticas.
+
+Por ejemplo, en~\cite{Arboleda2018} se hizo una clasificación de las especies de granos de café haciendo uso de procesamiento de imágenes, redes neuronales y K vecinos más cercano, aquí se extrajeron las características más importantes del grano de café, para poder obtener estas características se basaron en la morfología, el área, el perímetro, el porcentaje de redondez y el diámetro equivalente el cual no es el diámetro en el que este trabajo se centra, sino el diámetro de alguna circunferencia con el mismo área equivalente a alguna partícula de cualquier forma, aquí se llega a la conclusión que es recomendable usar técnicas de procesamiento de imágenes para la clasificación de granos de café. En~\cite{Portugal2016} se hizo una evaluación de los defectos físicos de los granos de café verde usando visión artificial para poder definir la calidad de los granos, se implementó un sistema el cual usa un algoritmo que clasifica los granos de café en 13 categorías logrando en 98.8\% de efectividad, un estudio similar se realizó en~\cite{Carrillo2009} y~\cite{RamirezTicona2016}. Otra técnica utilizada fue el análisis de imágenes hiper-espectrales, en~\cite{Nansen2016} se hizo un estudio en el que se caracterizó la consistencia de diferentes marcas de granos de café tostado, para lo cual se adquirió imágenes hiper-espectrales de muestras molidas y haciendo un análisis demostraron que se puede utilizar este método para monitorear la consistencia de algún producto de bebida como el café. En~\cite{Girma2013} se desarrolló un sistema de clasificación basado en un algoritmo que tiene la capacidad de extraer las características de los granos de café Hararghe mediante el análisis de imágenes, se basó en tres características como color, textura y forma, se obtuvo una precisión general de 99.4\%, pero en este estudio solo se usaron 160 imágenes, por lo cual recomiendan realizar el procesos con una mayor cantidad de imágenes, otro trabajo como este se hizo en~\cite{Birhanu2015}, pero esta vez usando café tostado, el cual exponen que sus características son diferentes a los granos de café verde. También se hizo una clasificación de acuerdo al color de los granos de café verde en~\cite{Oliveira2016}, se construyó un sistema que mide el color de los granos de café los cuales se clasificaron en cuatro grupos como blanquecino, verde de caña, y verde azulado, el sistema demostró tener un error de 1.15\% con redes neuronales y un 100\% eficacia con el clasificador bayesiano ambas técnicas utilizadas en el sistema. Otra clasificación de acuerdo al color de los granos de café, pero esta vez tostados, se hizo en ~\cite{Nasution2017}, donde alcanzó un 97.5\% de precisión al identificar los niveles de tostado de los granos de café. Adicionalmente en~\cite{Ramos2017} se propuso un método no destructivo para poder contar las cerezas de café en las ramas del cafeto por medio de imágenes digitales, construyó un sistema de visión artificial para poder identificar y contar aquellos frutos que eran cosechables y no cosechables, con este sistema se buscó generar nuevas herramientas para los cafetaleros ya que es un sistema de bajo costo y no destructivo.
+
+Para la propuesta, se necesitará medir el diámetro en milímetros haciendo uso solo de imágenes, en los últimos años se han estado haciendo investigaciones al respecto. Por ejemplo,~\cite{Carter2005} hace una investigación que consiste en medir la forma de partículas distintas basado en imágenes, pero los resultados no los presenta en unidades de medida absolutas, sin embargo, si recomienda tener cuidado si se quiere lograr esto, ya que los tamaños de las formas de las partículas en las imágenes varían según la imagen. En~\cite{Wang2006} se propone el método del rectángulo de mejor ajuste para la medición del tamaño y forma de partículas, este método es invariante a la rotación y tiene buenos resultados en comparación con las mediciones manuales hechas a las partículas con las cuales concuerdan bien. Por otro lado en~\cite{Hong2013} se hace uso de un dispositivo de cámara acoplada para lograr la medición de partículas de sedimento de formas irregulares extrayendo el tamaño de los granos mediante la segmentación de las partículas captadas por la cámara, para poder medir las  partículas se hace uso del método del área equivalente a un círculo calculando el diámetro de este último, el sistema presentado está limitado por el tamaño mínimo medible que vendría a ser el número de píxeles de la cámara, esto podría ser superado usando una cámara de alta resolución. Luego también en~\cite{Liao2010} se construyó un sistema fijo para el escaneo y análisis del tamaño de partículas de cualquier forma, este sistema tiene una etapa de calibración en la cual se introduce la relación de píxeles con milímetros con la ayuda de una bola de un tamaño predefinido, este sistema demostró tener una alta precisión en el análisis de tamaño de partículas. Otro trabajo parecido se hizo en~\cite{Budzan2018} donde se propone un método para la medición de partículas utilizando imágenes digitales en tiempo real, para lo cual usaron partículas del proceso de molienda de mineral de cobre, implementaron una cámara fija para la captura de imágenes, pero con diferente dirección del origen de luz de 45 grados para ambos lados. En~\cite{Ali2017} se propone una técnica usando visión por computadora para poder detectar el etiquetado fraudulento de granos de arroz distintos al tipo Basmati, se utilizó tres características: morfología, color y textura, para la medición morfológica se utilizó la longitud por píxel, aunque no menciona como introduce esta medición en la imagen, obteniendo un 90\% de precisión de clasificación de los granos de arroz fraudulentos. Un trabajo interesante se hizo en~\cite{Tanabata2012} en el cual se desarrolló un software para la medición de semillas de arroz, en el cual mencionan, las mediciones son ligeramente más cortas que las realizadas con el calibrador sin precisar cuánto, para obtener la medición en medidas reales se debe ingresar manualmente cual es la relación entre milímetros y píxeles de la imagen introducida. En~\cite{Gao2017} se hizo una aplicación móvil que hace una segmentación de las semillas utilizando técnicas de procesamiento de imágenes. Luego en~\cite{Severa2012}, se calcula la variabilidad de la forma de granos de café, se determinó el volumen de los granos de café, lo que podría ayudar en el desarrollo de este trabajo donde se busca clasificar los granos de café por diámetros según las medidas estándar utilizadas en el tamizado de estas.
+
+Existen diversos trabajos basados en el procesamiento de imágenes digitales para el café en general como: el conteo de granos en sus ramas, la clasificación de especies de granos, el monitoreo de la consistencia del café tostado, la extracción de características físicas tanto en granos verdes como en tostados, la clasificación de granos verdes y tostados de acuerdo solo al color, la detección y evaluación de defectos físicos en los granos de café, entre otros. El presente trabajo puede contribuir, como a cualquiera de los ya mencionados, fuertemente a~\cite{Portugal2016} y~\cite{RamirezTicona2016}, ya que estos estudios buscan elevar la calidad de los granos de café en la etapa de post cosecha y antes de ser tostados, detectando y clasificando los defectos físicos en los granos de café verde en una muestra y el presente trabajo busca medir los granos de café para tener un conteo porcentual de los tamaños que posee la muestra para poder realizar un tostado adecuado de todo el lote.
+
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAFIA
+%----------------------------------------------------------------------------------------
+
+\bibliographystyle{ieeetr} % estilo de la bibliografia
+\renewcommand*{\bibname}{Referencias}
+\bibliography{bibliografia} % nombre del archivo .bib
+%\addcontentsline{toc}{chapter}{REFERENCIAS}
+%\newpage
+
+
+\end{document} 
+
+
