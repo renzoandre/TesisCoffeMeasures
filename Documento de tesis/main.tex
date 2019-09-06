@@ -1,0 +1,314 @@
+% Modified on May 12, 2018
+% by Christian E. Portugal-Zambrano
+% Original author: Jesús P. Mena-Chalco 
+% Revisión: Fabio Kon e Paulo Feofiloff
+% Link http://latex-exemplo.blogspot.pe/2015/11/modelo-latex-para-dissertacoes-e-teses.html
+
+\documentclass[12pt,oneside,a4paper]{book}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage[pdftex]{graphicx}
+\usepackage{paralist}
+\usepackage{colortbl}
+\usepackage[nottoc]{tocbibind}
+\usepackage{courier}
+\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage[a4paper,top=3.5cm,bottom=3.5cm,left=2.5cm,right=2.04cm]{geometry}
+\usepackage[pdftex,plainpages=false,pdfpagelabels,pagebackref,colorlinks=true,citecolor=Blue,linkcolor=Black,urlcolor=Blue,filecolor=green,bookmarksopen=false]{hyperref} % links coloridos
+\usepackage{type1cm}
+    
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{emptypage}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{wrapfig}
+\everymath{\displaystyle}
+\usepackage{url}
+\usepackage{pdfpages}
+\usepackage{multirow}
+\usepackage[numbers,sort]{natbib}
+\usepackage{doi}
+\usepackage{cite}
+
+\usepackage[spanish]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{amssymb}
+
+\usepackage[all]{hypcap}                    % soluciona o problema com o hyperref e capitulos
+
+\fontsize{60}{62}\usefont{OT1}{cmr}{m}{n}{\selectfont}
+
+% ---------------------------------------------------------------------------- %
+% Cabeçalhos similares ao TAOCP de Donald E. Knuth
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{\MakeUppercase{#1}}{}}
+\renewcommand{\headrulewidth}{0pt}
+
+
+
+\graphicspath{{./images/}}
+\urlstyle{same}   
+\setlength\LTcapwidth{\textwidth}  %para evitar  el centrado en los longtable
+\newcommand{\grad}{\hspace{-2mm}$\phantom{a}^{\circ}$}
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\raggedbottom                           % para no permitir espacios extras en el texto
+\fontsize{60}{62}\usefont{OT1}{cmr}{m}{n}{\selectfont}
+\frenchspacing 
+
+
+
+
+%Personalización  del paquete hyperref
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=false,        % show Acrobat’s toolbar?
+    pdfmenubar=false,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={},    % title
+    pdfauthor={},     % author
+    pdfsubject={Tesis para optar el Título de Ingeniero},   % subject of the document
+    pdfcreator={},   % creator of the document
+    pdfproducer={LaTex}, % producer of the document
+    pdfkeywords={Algoritmo Genético;} {Redes Neuronales;} {SVM;} {Clasificación de MRI;},% list of keywords
+    pdfnewwindow=true,      % links in new window
+}
+
+
+
+
+
+% ---------------------------------------------------------------------------- %
+
+\begin{document}
+%\lhead[\thepage]{CAPÍTULO \thechapter.}
+%\rhead[CAPÍTULO\Thechapter. \leftmark]{\thepage}
+
+
+\renewcommand*{\contentsname}{ÍNDICE DE CONTENIDO}
+\renewcommand*{\listfigurename}{ÍNDICE DE FIGURAS}
+\renewcommand*{\listtablename}{ÍNDICE DE TABLAS}
+
+
+\thispagestyle{empty}
+\begin{center}
+  
+\rule{\textwidth}{3pt} \\
+\vspace{-0.38cm}
+\rule{\textwidth}{1pt} \\
+\vspace{0.5cm}
+\Large{\textbf{UNIVERSIDAD NACIONAL DE SAN AGUSTÍN}} \\ \vspace{0.2cm}
+\large{\textbf{FACULTAD DE INGENIERÍA DE PRODUCCIÓN Y SERVICIOS}} \\ \vspace{0.2cm}
+\large{\textbf{ESCUELA PROFESIONAL DE INGENIERÍA DE SISTEMAS}} \vspace{1.5cm}
+  
+    \includegraphics[width=0.3\textwidth]{logotipo} \\
+    \vspace*{1.5cm}
+     \textbf{\Large{Título del trabajo de fin de carrera}}\\
+     \vspace*{1cm}
+     \Large{Tesis presentada por el/la Bachiller:\\}
+     \Large{\textbf{}}
+%    
+     \vskip 1cm
+     \Large{Para optar el Título Profesional de:}\\
+     \LARGE{\textbf{INGENIERO(A) DE SISTEMAS}}
+    \vskip 1cm
+%    % Programa: Nombre del Programa\\
+%      Orientador:  nombre del orientador\\
+%     %Coorientador: Prof. Dr. Nome do Coorientador
+% 
+ %  \vskip 0.5cm
+%     %\normalsize{Durante el desarrollo de este trabajo el autor recibió el apoyo de
+%     %...
+    
+    \vskip 2cm
+    \large{Arequipa, 01 de Enero del 2018}\\
+\rule{\textwidth}{1pt}\\
+\vspace{-0.32cm}    
+\rule{\textwidth}{3pt}
+\end{center}
+
+% ---------------------------------------------------------------------------- %
+
+% Página de presentación (sólo para la versión final)
+\newpage
+\thispagestyle{empty}
+  \begin{center}
+     \vspace*{2.3 cm}
+        \textbf{\Large{Título aqui.}}\\
+        \vspace*{2 cm}
+    \end{center}
+
+    \vskip 2cm
+
+   \begin{flushright}
+          Esta versión definitiva de tesis\\
+         contiene las correcciones sugeridas y asesoría de la \\
+          comisión del jurado durante la defensa realizada\\
+          por nombre del autor\\
+          \textit{el día 01 de Enero del 2018.} 
+    \vskip 1cm
+
+    \end{flushright}
+    \vskip 4.2cm
+
+    \begin{quote}
+    \noindent \textbf{Comisión del jurado:}
+    
+    \begin{itemize}
+		\item  
+		\item 
+		\item
+    \end{itemize} 
+    \end{quote}
+    \begin{quote}
+    	\hspace{8cm}\textbf{Asesor:} \large{Nombre del asesor}
+    \end{quote}
+\pagebreak
+\pagenumbering{roman}     % comenzamos a enumerar
+
+
+% ---------------------------------------------------------------------------- %
+% Dedicatoria
+\chapter*{DEDICATORIA}
+
+Se hará en una hoja en el ángulo inferior derecho. Se debe redactar con tipo de letra “Arial” de tamaño 10.
+%\begin{quotation}
+%\textbf{Lo importante no es ser grande sino sentirse grande por dentro} 
+%\end{quotation}
+
+
+
+% ---------------------------------------------------------------------------- %
+% Agradecimientos
+\chapter*{\centering AGRADECIMIENTOS}
+
+ubicado en el centro de la página en tipo de letra “Arial” de 16 y en negrita. El resto se debe redactar con tipo de letra “Arial” de tamaño 12
+ 
+%Cuando proceda, deberá
+%escribirse en una hoja encabezada por el título "AGRADECIMIENTOS",
+%ubicado en el centro de la página en tipo de letra “Arial” de 16 y en negrita. El
+%resto se debe redactar con tipo de letra “Arial” de tamaño 12
+
+% ---------------------------------------------------------------------------- %
+% Presentacion
+\chapter*{\centering PRESENTACIÓN}
+
+Ver anexo 09. Se debe redactar con tipo de letra “Arial” de tamaño 12
+ 
+%\begin{quotation}
+%\textbf{Lo importante no es ser grande sino sentirse grande por dentro} 
+%\end{quotation}
+
+% ---------------------------------------------------------------------------- %
+% Dictamen
+\chapter*{Dictamen del asesor}
+
+Incluir el formato del anexo 08 firmado por el asesor del trabajo.
+ 
+%\begin{quotation}
+%\textbf{Lo importante no es ser grande sino sentirse grande por dentro} 
+%\end{quotation}
+
+
+% ---------------------------------------------------------------------------- %
+% Resumen
+\chapter*{Resumen}
+
+Se debe redactar con tipo de letra “Arial” de tamaño 12. \\
+
+
+\noindent \textbf{Palabras clave:} palabras clave.
+
+% ---------------------------------------------------------------------------- %
+% Abstract
+\chapter*{Abstract}
+ Do you know ?
+ 
+\noindent \textbf{Keywords:} 
+
+% ---------------------------------------------------------------------------- %
+% Sumário
+\tableofcontents    % imprime el resumen
+%\contentsname
+
+"ÍNDICE DE CONTENIDOS” ubicado en el centro de la página en letra “Arial” de tamaño 18
+y en negrita.
+El detalle se debe redactar con tipo de letra “Arial” de tamaño 12.
+
+% ---------------------------------------------------------------------------- %
+\chapter*{Glosario}
+\addcontentsline{toc}{chapter}{Glosario}
+\begin{tabular}{ll}
+	EO & Earth Observation \\
+	SAR & Synthetic Aperture Radar\\
+	SVF & Sky View Factor \\
+	GSV & Google Street View\\ 
+	DSM & Digital Surface Model\\
+	GVI & Green View Index\\
+	LST & Land Surface Temperature \\
+	LiDAR & Light Detection and Ranging
+ \end{tabular}
+
+% ---------------------------------------------------------------------------- %
+\chapter*{Lista de Abreviaturas}
+\addcontentsline{toc}{chapter}{Lista de Abreviaturas}
+\begin{tabular}{ll}
+         MAE     & Error Absoluto Promedio (\emph{Mean Absolute Error})\\
+         MAPE    & Porcentaje de Error Absoluto Promedio (\emph{Mean Absolute Percentage Error})\\
+         CCD 	 & Dispositivos de carga acoplada (\emph{Charged Coupled Device})\\
+\end{tabular}
+
+% ---------------------------------------------------------------------------- %
+\chapter*{Lista de Símbolos}
+\addcontentsline{toc}{chapter}{Lista de Símbolos}
+\begin{tabular}{ll}
+         $pfc$   & Total de píxeles hacia el centro (\emph{Pixel From Center})\\
+         $rpc $  & Total de radianes por píxel (\emph{Radian Per Pixel Pitch})\\
+         $ro$    & Error por Radian (\emph{Radian offset})\\
+\end{tabular}
+
+% ---------------------------------------------------------------------------- %
+% Listas de figuras y tablas, estas son creadas automáticamente
+\listoffigures       
+\listoftables
+\newpage
+ÍNDICE DE FORMULAS
+
+Arial” tamaño 16 y en negrita.
+El detalle de los índices se debe redactar con tipo de letra “Arial” de tamaño 12
+
+% ---------------------------------------------------------------------------- %
+\chapter*{\centering INTRODUCCIÓN}
+\addcontentsline{toc}{chapter}{Lista de Símbolos}
+“INTRODUCCIÓN” ubicado en el centro de la página con tipo de letra “Arial” de 16 y negrita. El detalle de la introducción se debe redactar con tipo de letra “Arial” de tamaño 12
+
+
+% ---------------------------------------------------------------------------- %
+% Capítulos del trabajo
+\mainmatter
+
+%Aqui podemos incluir mas capítulos o secciones en diferentes archivos
+%esto para facilitar la lectura del trabajo
+\include{1_problema}      % asociado al archivo: 'problema.tex'
+\include{2_teoria}
+\include{3_elaboracion}
+\include{4_analisis}
+\include{5_conclusions}
+
+\appendix
+\include{appendixA}
+\small
+\nocite{*}
+\bibliographystyle{abbrvnat}
+\bibliography{bibliography}
+
+\end{document}

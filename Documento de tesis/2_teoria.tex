@@ -1,0 +1,114 @@
+\chapter{MARCO TEÓRICO}
+\label{chapter:teoria}
+
+\section{Antecedentes de la Investigación}
+\label{section:description}
+.....................
+
+%% ----------------------------------------------------------------------------------------------- %%
+
+\section{Estado del Arte}
+Lograr un café de calidad, requiere todo un meticuloso proceso con especial atención en todos los detalles del grano de café, desde la siembra hasta el tostado y molido de este. Por tal motivo ha sido tema de estudio por diferentes especialistas con el fin obtener procesos de calidad de los granos de café enfocándose en sus características físicas y organolépticas.
+
+Por ejemplo, en~\citep{Arboleda2018} se hizo una clasificación de las especies de granos de café haciendo uso de procesamiento de imágenes, redes neuronales y K vecinos más cercano, aquí se extrajeron las características más importantes del grano de café, para poder obtener estas características se basaron en la morfología, el área, el perímetro, el porcentaje de redondez y el diámetro equivalente el cual no es el diámetro en el que este trabajo se centra, sino el diámetro de alguna circunferencia con el mismo área equivalente a alguna partícula de cualquier forma, aquí se llega a la conclusión que es recomendable usar técnicas de procesamiento de imágenes para la clasificación de granos de café. En~\citep{Portugal2016} se hizo una evaluación de los defectos físicos de los granos de café verde usando visión artificial para poder definir la calidad de los granos, se implementó un sistema el cual usa un algoritmo que clasifica los granos de café en 13 categorías logrando en 98.8\% de efectividad, un estudio similar se realizó en~\citep{Carrillo2009} y~\citep{RamirezTicona2016}. Otra técnica utilizada fue el análisis de imágenes hiper-espectrales, en~\citep{Nansen2016} se hizo un estudio en el que se caracterizó la consistencia de diferentes marcas de granos de café tostado, para lo cual se adquirió imágenes hiper-espectrales de muestras molidas y haciendo un análisis demostraron que se puede utilizar este método para monitorear la consistencia de algún producto de bebida como el café. En~\citep{Girma2013} se desarrolló un sistema de clasificación basado en un algoritmo que tiene la capacidad de extraer las características de los granos de café Hararghe mediante el análisis de imágenes, se basó en tres características como color, textura y forma, se obtuvo una precisión general de 99.4\%, pero en este estudio solo se usaron 160 imágenes, por lo cual recomiendan realizar el procesos con una mayor cantidad de imágenes, otro trabajo como este se hizo en~\citep{Birhanu2015}, pero esta vez usando café tostado, el cual exponen que sus características son diferentes a los granos de café verde. También se hizo una clasificación de acuerdo al color de los granos de café verde en~\citep{Oliveira2016}, se construyó un sistema que mide el color de los granos de café los cuales se clasificaron en cuatro grupos como blanquecino, verde de caña, y verde azulado, el sistema demostró tener un error de 1.15\% con redes neuronales y un 100\% eficacia con el clasificador bayesiano ambas técnicas utilizadas en el sistema. Otra clasificación de acuerdo al color de los granos de café, pero esta vez tostados, se hizo en ~\citep{Nasution2017}, donde alcanzó un 97.5\% de precisión al identificar los niveles de tostado de los granos de café. Adicionalmente en~\citep{Ramos2017} se propuso un método no destructivo para poder contar las cerezas de café en las ramas del cafeto por medio de imágenes digitales, construyó un sistema de visión artificial para poder identificar y contar aquellos frutos que eran cosechables y no cosechables, con este sistema se buscó generar nuevas herramientas para los cafetaleros ya que es un sistema de bajo costo y no destructivo.
+
+Para la propuesta, se necesitará medir el diámetro en milímetros haciendo uso solo de imágenes, en los últimos años se han estado haciendo investigaciones al respecto. Por ejemplo,~\citep{Carter2005} hace una investigación que consiste en medir la forma de partículas distintas basado en imágenes, pero los resultados no los presenta en unidades de medida absolutas, sin embargo, si recomienda tener cuidado si se quiere lograr esto, ya que los tamaños de las formas de las partículas en las imágenes varían según la imagen. En~\citep{Wang2006} se propone el método del rectángulo de mejor ajuste para la medición del tamaño y forma de partículas, este método es invariante a la rotación y tiene buenos resultados en comparación con las mediciones manuales hechas a las partículas con las cuales concuerdan bien. Por otro lado en~\citep{Hong2013} se hace uso de un dispositivo de cámara acoplada para lograr la medición de partículas de sedimento de formas irregulares extrayendo el tamaño de los granos mediante la segmentación de las partículas captadas por la cámara, para poder medir las  partículas se hace uso del método del área equivalente a un círculo calculando el diámetro de este último, el sistema presentado está limitado por el tamaño mínimo medible que vendría a ser el número de píxeles de la cámara, esto podría ser superado usando una cámara de alta resolución. Luego también en~\citep{Liao2010} se construyó un sistema fijo para el escaneo y análisis del tamaño de partículas de cualquier forma, este sistema tiene una etapa de calibración en la cual se introduce la relación de píxeles con milímetros con la ayuda de una bola de un tamaño predefinido, este sistema demostró tener una alta precisión en el análisis de tamaño de partículas. Otro trabajo parecido se hizo en~\citep{Budzan2018} donde se propone un método para la medición de partículas utilizando imágenes digitales en tiempo real, para lo cual usaron partículas del proceso de molienda de mineral de cobre, implementaron una cámara fija para la captura de imágenes, pero con diferente dirección del origen de luz de 45 grados para ambos lados. En~\citep{Ali2017} se propone una técnica usando visión por computadora para poder detectar el etiquetado fraudulento de granos de arroz distintos al tipo Basmati, se utilizó tres características: morfología, color y textura, para la medición morfológica se utilizó la longitud por píxel, aunque no menciona como introduce esta medición en la imagen, obteniendo un 90\% de precisión de clasificación de los granos de arroz fraudulentos. Un trabajo interesante se hizo en~\citep{Tanabata2012} en el cual se desarrolló un software para la medición de semillas de arroz, en el cual mencionan, las mediciones son ligeramente más cortas que las realizadas con el calibrador sin precisar cuánto, para obtener la medición en medidas reales se debe ingresar manualmente cual es la relación entre milímetros y píxeles de la imagen introducida. En~\citep{Gao2017} se hizo una aplicación móvil que hace una segmentación de las semillas utilizando técnicas de procesamiento de imágenes. Luego en~\citep{Severa2012}, se calcula la variabilidad de la forma de granos de café, se determinó el volumen de los granos de café, lo que podría ayudar en el desarrollo de este trabajo donde se busca clasificar los granos de café por diámetros según las medidas estándar utilizadas en el tamizado de estas.
+
+Existen diversos trabajos basados en el procesamiento de imágenes digitales para el café en general como: el conteo de granos en sus ramas, la clasificación de especies de granos, el monitoreo de la consistencia del café tostado, la extracción de características físicas tanto en granos verdes como en tostados, la clasificación de granos verdes y tostados de acuerdo solo al color, la detección y evaluación de defectos físicos en los granos de café, entre otros. El presente trabajo puede contribuir, como a cualquiera de los ya mencionados, fuertemente a~\citep{Portugal2016} y~\citep{RamirezTicona2016}, ya que estos estudios buscan elevar la calidad de los granos de café en la etapa de post cosecha y antes de ser tostados, detectando y clasificando los defectos físicos en los granos de café verde en una muestra y el presente trabajo busca medir los granos de café para tener un conteo porcentual de los tamaños que posee la muestra para poder realizar un tostado adecuado de todo el lote.
+
+%% ----------------------------------------------------------------------------------------------- %%
+
+\section{Marco Conceptual}
+
+\subsection{Iluminación}
+En el presente proyecto se realizará un trabajo bajo un ambiente controlado, por lo que se tendrá un manejo de la iluminción del ambiente para la obtención de las imágenes. Generalmente se utilizan dos tipos de iluminación: frontal y trasera o retroiluminación.
+
+\subsubsection{Ilumicación frontal}
+Esta iluminación se da cuando la luz es puesta directamente sobre el objeto y en cualquier dirección.
+
+En este caso se puede producir soombras y reflejos, lo cual puede ser perjudicial cuando se quiere detectar la forma de los objetos. A su vez también pueden producir brillos en el objeto, lo que puede afectar la detección de contornos. Por estos motivos se debería usar luz de tipo difusa o luz indirecta.
+
+\subsubsection{Ilumicación trasera o retroilumicación}
+En esta ilumincación se utiliza una pantalla, la cual es iluminada de manera que se capta la sombra del objeto.
+
+Puede hacerse de dos formas: la primera es colocando el objeto entre los focos y la pantalla (la cámara está atrás de la panatlla) o colocando el objeto entre la la cámara y la pantalla (los focos estan atrás de la pantalla). En este caso solo se puede reconocer el controno del objeto , lo que puede ayudar en el pre procesado y la segmentación de los objetos, pero se debe tener mucho cuidado con la ilumicación, ya que la sombra generada puede ser deformada por la misma luz. [Gonzalez2006]
+
+imagenes?
+
+\subsection{Representación digital de la imagen}
+Antes de que en una imagen, de la vida real (imagen continua), se pueda realizar cualquier proceso computacional, esta debe ser representada por una estructura discreta para que pueda ser procesada computacionalmente, como puede ser una matriz bidimensional. Para poder representar una imagen continua, esta debe primero ser discreta, lo cual se obtiene proyectando la imagen continua en una cuadrícula de fotodetectores en la que en cada celda se calcula la intensidad luminosa proyectada en ella, de esta forma se discretiza una imagen continua [FonaCosta2009].
+
+Una imagen digital está representada, matemáticamente, por una matriz \textit{f} de dimensiones \textit{m x n}, como se muestra en la figura, donde cada elemento respresenta un elemento imagen o pixel, que da la intensidad de la imagen en ese punto [Gonzalez2006]. Cada pixel se representa con una función bidimensional \textit{f(x, y)}, donde \textit{x} y \textit{y} son coordenadas en un plano y cuya amplitud en la coordenada \textit{(x, y)}, representa el nivel de gris de la imagen en ese punto [Sucar2008] [Sonka2014] [Gonzalez2017].
+
+(imagen gonzales2006 pagina 12 matriz)
+
+\subsection{Digitalización de imágenes}
+Para poder digitalizar una imagen, se lleva acabo dos importantes pasos: el muestreo (sampling) y la cuantización  (quantization). Mientras mas fino sea el muestreo y la cuantización, mas se aproximara la imagen digital a la real.
+
+\subsubsection{Muestreo}
+Se da la conversión de la señal continua en una representación discreta. Está directamente relacionado con el nivel de detalle que contendrá la imagen digital, es decir la resolución de la imagen. Una imagen continua se digitaliza en puntos de muestreo, los cuales están ordenados en un plano conformado por cuadrículas, estas cuadrículas pueden ser cuadradas o hexagonales, esto depende de los sensores de captación de la señal.
+
+(imagen sonka2014 pagina 15 imagen 2.2)
+
+\subsubsection{Cuantización}
+Es la transición enntre los valores continuos (real) y su equivalente digital. Debe ser lo suficientemente alto para que se puede apreciar mas en detalle el sombreado fino de la imagen.  La mayoría de los dispositivos de procesamiento de imágenes digitales utilizan la cuantización en \textit{k} intervalos iguales. Si se utilizan \textit{b} bits para expresar los valores del brillo de píxeles, entonces el número de niveles de brillo es \textit{$k = 2^{b},$} comunmente se utilizan 8 bits por pixel por canal (uno para rojo, verde, azul). [Sonka2014]
+
+(imagen sonka2014 pagina 15 imagen 2.3)
+
+\subsection{Procesamiento digital de imágenes}
+El procesamiento digital de imágenes se hace por medio  de una computadora. Se considera tres tipos de procesos computarizados: proceso de bajo, medio y alto nivel. En el proceso bajo nivel se hace operaciones báscias como la reducción de ruido, mejora del contraste y el enfoque de la imagen, se caracteriza porque el resultado de estas operaciones es otra imagen. En el proceso de nivel medio se realiza operaciones como la segmentación, adecuación de la imagen para el procesamiento por computadora y clasificación de objetos, se caracteriza porque el resultado de estas operaciones son atributos, como bordes, contornos y la indentidad de obejtos, que se extrayeron luego de realizar estas operaciones a la imagen de entrada. En el proceso de nivel alto se dá una interpretación a un conjunto de objetos reconocidos en una imagen [Gonzalez2017].
+
+\subsection{Imágenes en escala de grises}
+En una imagen en escala de grises, cada pixel está representado por un número entero no negativo. El rango de valores de este número depende del nivel de brillo con el que se cuantizó la imagen, como se mencionó anteriormente, se usan bits para representar este nivel brillo, por ejemplo 1, 2, 4 o 8 bits, en algunos casos puede ser tambien 16 bits. Estos valores enteros no negativos van desde 0 a $2^{n} - 1$, donde $n$ es el numero de bits utilizados. Comunmente se utilizan 8 bits, por lo que por lo general el rango de valores irá de 0 a 255, donde 0 representa el color negro y 255, u otro valor máximo, dependiendo del número de bits utilizados, representa el color blanco, mientras los valores intermedios, representan los niveles de gris [Soille2004].
+
+(imagen Soile2004 pag 19)
+
+\subsection{Conversión de una imagen en color a una imagen en escala de grises}
+Las imágenes hoy en día están en escala de colores, estas generalmente usan el espacio de color RGB, el cual es el más popular, en este modelo, cada canal representa uno de los colores primarios como el rojo (R), verde (G) y azul (B), en el que cada canal está representado por un entero no negativo, pero existen otros modelos como HSV y YUV. Por ejemplo, un pixel en una imagen a color puede estar representado de la forma [R, G, B].
+
+El objetivo es llevar este modelo a uno en escala de grises. Por ejemplo, la técnica mas básica es obtener un promedio de los tres valores RGB:
+\[
+I = (R + G + B) / 3
+\]
+donde $I$ es el nuevo valor en escala de grises y $R, G, B$ son los valores de rojo, verde y azul respectivamente.
+
+Los coeficientes del Comité Nacional de Sistema de Televisión (NTSC), consideran la contribución desigual de los canales de color para la versión RGB a escala de grises por:
+\[
+I = 0.299 R + 0.587 G + 0.114 B
+\]
+esta otra técnica ha sido aceptado como el método más común para la conversión de RGB a escala de grises, aunque, hoy en día existen otros métodos [Guenes2015].
+
+\subsection{Imágenes binarias}
+Las imágenes binarias corresponden al tipo de imagen más simple y usada, donde cada pixel de esta imagen está representado por dos unicos posibles valores, comunmente 0 o 1. Por lo general el primer plano de la imagen está representado por 1 y el fondo por 0, pero también pude ser de forma viceversa. Las imágenes binarias pueden ser de gran ayuda porque los objetos comprendidos en esta pueden ser entendidos como un conjunto de puntos conectados, lo que podría ser de gran ayuda para hacer una análisis morfológico [FonaCosta2009] [Soille2004].
+
+\subsection{Binarización de una imagen}
+El proceso de binarización es una operación simple. Consiste en tomar cada pixel y asignarle un valor, ya sea 0 (negro) si es menor o igual a un umbral o 1 (blanco) si es mayor. Matemáticamente se puede representar: 
+\[
+S[x, y] = 1 \longleftrightarrow E[x, y] > T
+\]
+\[
+S[x, y] = 0 \longleftrightarrow E[x, y] \leq T
+\]
+donde $T$ es el valor de umbral, $E$ es la imagen a binarizar y $S$ es la imagen resultante.
+
+Se aplica, como se dijo anteriormente, para poder identificar un objeto de interés del resto de la imagen. Sin embargo, el problema aparece cuando se quiere establecer el umbral, el cual se puede establecer por pruba y error dependiendo de la imagen. Otra forma es usando su histograma de tonos de grises [Sucar2008].
+
+\subsubsection{Umbral global óptimo utilizando el método de Otsu}
+Básicamente hace que las clases (grupos a los que son asignados los píxeles al momento de realizar la binarización) con umbrales adecuados deben ser distintos con respecto a los valores de intensidad de sus píxeles y, a la inversa, que un umbral que dé la mejor separación entre clases en términos de sus valores de intensidad sería el mejor (óptimo) umbral [Gonzalez2017].
+
+\subsection{OpenCV}
+
+\\\\
+realce
+\\\\
+Noise in images sonka
+
+\\\\
+Procesamiento de imagenes
+
+El reconocimiento de patrones es una disciplina matemática que se encarga de reconocer patrones en datos o señales. los metodos de reconocimientos de patrones ha sido extensamente utlizados en el analisis de imagenes y vision computacional.
+Vision computacional se encarga, por medio de sistemas visuales, comprender e interpretar de alguna manera nuestro mundo, incluye temas como la comprension de escenas, reconocimiento de objetos, interpretacion del movimiento, navegacion autónoma entre otros. Tiene sus origenes en la inteligencia artificial. [WilhelmBurger2013]
+
+
+%% ----------------------------------------------------------------------------------------------- %%
+
